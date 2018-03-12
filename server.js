@@ -21,11 +21,15 @@ db.on('open', () => {
 // middleware!!!
 app.use(logger('dev'))
 app.use(bodyParser.json())
+app.use(express.static(`${__dirname}/client/build`))
 
 // routes!!!
 
 app.get('/', (req, res) => {
     res.send('hello clarice')
+})
+app.get('/*', (req, res) => {
+    res.sendFile(`${__dirname}/client/build`)
 })
 
 app.use('/api/users', userController)
