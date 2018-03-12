@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
+const userController = require('./controllers/userController')
 
 const app = express()
 
@@ -17,12 +18,17 @@ db.on('open', () => {
     console.log('Successfully connected to MongoDB!')
 })
 
+// middleware!!!
 app.use(logger('dev'))
 app.use(bodyParser.json())
+
+// routes!!!
 
 app.get('/', (req, res) => {
     res.send('hello clarice')
 })
+
+app.use('/api/users', userController)
 
 const PORT = process.env.PORT || 3001
 
