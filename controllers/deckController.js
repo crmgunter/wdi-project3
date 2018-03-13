@@ -63,15 +63,18 @@ router.patch('/:id', (req, res) => {
     })
 })
 
-// //DELETE ROUTE
-// router.delete('/:id', (req, res) => {
-//     const userId = req.params.id
-//     User.findByIdAndRemove(userId)
-//     .then(() => {
-//         res.redirect('/api/users')
-//     }).catch((err) => {
-//         console.log(err)
-//     })
-// })
+//DELETE ROUTE
+router.delete('/:id', (req, res) => {
+    const deckId = req.params.id
+    const userId = req.params.userId
+    User.findById(userId)
+    .then((user) => {
+        const deck = user.decks.id(deckId).remove()
+        return user.save()
+        res.redirect(`/api/users/${userId}/decks`)
+    }).catch((err) => {
+        console.log(err)
+    })
+})
 
 module.exports = router;
