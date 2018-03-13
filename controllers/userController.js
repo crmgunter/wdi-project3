@@ -53,7 +53,7 @@ router.delete('/:id', (req, res) => {
     const userId = req.params.id
     User.findByIdAndRemove(userId)
     .then(() => {
-        res.redirect('/api/users')
+        console.log('deleted')
     }).catch((err) => {
         console.log(err)
     })
