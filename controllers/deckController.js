@@ -31,8 +31,10 @@ router.post("/", (req, res) => {
 
 //SHOW ROUTE
 router.get("/:id", (req, res) => {
-    const deckId = req.params.deckId
-    const userId = req.params.id;
+    const deckId = req.params.id
+    const userId = req.params.userId;
+    console.log(userId)
+    console.log(deckId)
     User.findById(userId).then((user) => {
         const deck = user.decks.id(deckId)
       res.json(deck);
