@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const userController = require('./controllers/userController')
+const deckController = require('./controllers/deckController')
 
 const app = express()
 
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', userController)
+app.use('/api/users/:userId/decks', deckController)
 
 app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)
