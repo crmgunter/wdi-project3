@@ -44,19 +44,24 @@ router.get("/:id", (req, res) => {
   });
 })
 
-// //UPDATE ROUTE
-// router.patch('/:id', (req, res) => {
-//     const userId = req.params.id
-//     const updatedUser = req.body
-//     const savedUser = User.findByIdAndUpdate(userId, updatedUser)
-//     .then((updatedUser) => {
-//         res.json(savedUser)
-//         res.redirect('/api/users')
-//     }).catch((err) => {
-//         console.log(err)
-//         res.status(500).json(err)
-//     })
-// })
+//UPDATE ROUTE
+router.patch('/:id', (req, res) => {
+    const deckId = req.params.id
+    const userId = req.params.userId
+    const updatedDeck = req.body
+    User.findByIdAndUpdate(userId).then((user) => {
+        const deckToUpdate = user.decks.id(deckId)
+        deckToUpdate.name = updatedDeck.name
+        deckToUpdate.description = updatedDeck.description
+        deckToUpdate.archetype = updatedDeck.archetype
+        deckToUpdate.format = updatedDeck.format
+        return user.save()
+    }).then((user) => {
+        res.json(user.decks.id(deckId))
+    }).catch((err) =>{
+        console.log(err)
+    })
+})
 
 // //DELETE ROUTE
 // router.delete('/:id', (req, res) => {
