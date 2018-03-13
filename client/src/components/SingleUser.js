@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import NewDeckForm from './NewDeckForm'
 
 class SingleUser extends Component {
   state = {
     user: {
-      decks: []
+      decks: [],
+      newDeckForm: false
     }
   };
 
@@ -16,6 +18,10 @@ class SingleUser extends Component {
     console.log(this.state.user);
   }
 
+  toggleNewDeckForm = () => {
+    this.setState({ newDeckForm: !this.state.newDeckForm })
+  }
+
   render() {
     return (
       <div>
@@ -23,12 +29,18 @@ class SingleUser extends Component {
         {this.state.user.username}
         {this.state.user.decks.map(deck => (
           <div key={deck._id}>
-                    <h3>{deck.name}</h3>
-                    <h5>{deck.description}</h5>
-                    </div>
-        ))} 
+            <h3>{deck.name}</h3>
+            <h5>{deck.description}</h5>
+          </div>
+        ))}
 
-        <button>Add new deck</button>
+        <div>
+          <button onClick={this.toggleNewDeckForm}>Add new deck</button>
+          {this.state.newDeckForm ? <NewDeckForm /> : null}
+        </div>
+        <div>
+          <button>Delete this shit</button>
+        </div>
       </div>
     );
   }

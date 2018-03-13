@@ -10,9 +10,7 @@ class NewUserForm extends Component {
       const name = event.target.name
       const newState = {...this.state}
       newState[name] = event.target.value
-      console.log(newState)
       this.setState(newState)
-      console.log(newState[name])
   }
 
   handleSubmit = async (event) => {
@@ -22,7 +20,6 @@ class NewUserForm extends Component {
       }
       await axios.post('/api/users', payload)
       await this.props.getAllUsers()
-      console.log(this.state)
   }
 
   render() {
