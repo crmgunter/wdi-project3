@@ -7,12 +7,12 @@ class NewUserForm extends Component {
   };
 
   handleChange = (event) => {
-      const username = event.target.username
+      const name = event.target.name
       const newState = {...this.state}
-      newState[username] = event.target.value
+      newState[name] = event.target.value
       console.log(newState)
       this.setState(newState)
-      console.log(newState[username])
+      console.log(newState[name])
   }
 
   handleSubmit = async (event) => {
