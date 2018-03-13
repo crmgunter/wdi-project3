@@ -22,6 +22,11 @@ class SingleUser extends Component {
     this.setState({ newDeckForm: !this.state.newDeckForm })
   }
 
+  remove() {
+    this.props.deleteUser(this.props.id)
+  }
+
+
   render() {
     return (
       <div>
@@ -39,7 +44,7 @@ class SingleUser extends Component {
           {this.state.newDeckForm ? <NewDeckForm /> : null}
         </div>
         <div>
-          <button>Delete this shit</button>
+          <button onClick={this.props.deleteUser}>Delete this shit</button>
         </div>
       </div>
     );

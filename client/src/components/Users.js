@@ -8,6 +8,7 @@ class Users extends Component {
     users: [],
     showForm: false
   };
+
   componentWillMount() {
     this.getAllUsers();
   }
@@ -20,12 +21,19 @@ class Users extends Component {
       this.setState({ showForm: !this.state.showForm })
   }
 
+  deleteUser = (index) => {
+    const newUsers = [...this.state.users]
+    newUsers.splice(index, 1)
+    this.setState({ users: newUsers})
+  }
+
   render() {
     return (
       <div>
         <h1>hey from users</h1>
         {this.state.users.map(user => (
-          <Link key={user._id} to={`users/${user._id}`}>
+          <Link key={user._id} 
+          to={`users/${user._id}`}>
             <h3>{user.username}</h3>
           </Link>
         ))}
