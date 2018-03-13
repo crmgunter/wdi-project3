@@ -7,18 +7,24 @@ class EditUserForm extends Component {
     }
 
     handleChange = (event) => {
-        const newUser = [ ...this.props.user ]
-        const change = event.target.name
-        newUser[change] = event.target.value
-        this.setState({user: change})
+        const newUser = { ...this.props.user }
+        newUser[event.target.name] = event.target.value
+        this.setState({ user: newUser })
         console.log(this.state)
     }
 
-    updateUser = (user) => {
-        const userId = this.props.match.params.userId
+    // componentDidMount() {
+    //     const user = this.props
+    //     this.setState({ user })
+    // }
+
+    updateUser = (event) => {
+        event.preventDefault()
+        const userId = this.props.user._id
         console.log(userId)
-        axios.patch(`/api/users/${userId}`).then(res => {
-          this.setState({ user: res.data.user})
+        const payload = this.state.user
+        axios.patch(`/api/users/${userId}`, payload).then(res => {
+        this.setState({ user: res.data})
         })
       }
 
@@ -27,7 +33,11 @@ class EditUserForm extends Component {
             <div>
                 <h1>hiya</h1>
                 <form onSubmit={this.updateUser}>
-                <input type='text' name='username' value={this.props.user.username}
+                <label htmlFor="name">Name</label>
+                <input type='text' 
+                name='username' 
+                value={this.state.user.username}
+                placeholder={this.props.user.username}
                 onChange={this.handleChange}
                 />
                 <button>Submit</button>
