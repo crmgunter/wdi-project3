@@ -29,7 +29,7 @@ class SingleUser extends Component {
                     </div>
         ))} 
 
-        <button></button>
+        <button>Add new deck</button>
       </div>
     );
   }
