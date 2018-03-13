@@ -26,6 +26,7 @@ const blackLotus = new Card({
 
 const testDeck = new Deck({
     name: "test deck one",
+    description: "this is a test deck with a black lotus in it",
     cards: [blackLotus],
     archetype: "artifact",
     format: "vintage"

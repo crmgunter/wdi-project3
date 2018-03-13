@@ -21,7 +21,7 @@ class Users extends Component {
                 <h1>hey from users</h1>
                 {this.state.users.map(user => (
                     <Link key={user._id} to={`users/${user._id}`}>
-                    <h3>Username: {user.username}</h3>
+                    <h3>{user.username}</h3>
                     </Link>
                 ))}
             </div>
