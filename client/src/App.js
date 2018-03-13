@@ -16,7 +16,7 @@ class App extends Component {
           <Route exact path='/' component={LandingPage}/>
           <Route exact path='/users' component={Users}/>
           <Route exact path='/users/:userId' component={SingleUser}/>
-          <Route exact path='/decks/:deckId' component={SingleDeck}/>
+          <Route exact path='/users/:userId/decks/' component={SingleDeck}/>
         </Switch>
       </div>
       </Router>

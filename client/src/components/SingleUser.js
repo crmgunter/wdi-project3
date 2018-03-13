@@ -3,6 +3,7 @@ import axios from "axios";
 import NewDeckForm from './NewDeckForm'
 import EditUserForm from './EditUserForm'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 
 class SingleUser extends Component {
   state = {
@@ -47,16 +48,17 @@ class SingleUser extends Component {
 
     return (
       <div>
-        <h1>hey from single user</h1>
+        <h1>hey from single mom</h1>
         {this.state.user.username}
         {this.state.user.decks.map(deck => (
           <div key={deck._id}>
-            <h3>{deck.name}</h3>
+            <Link to={`/users/${this.state.user._id}/decks`}><h3>{deck.name}</h3></Link>
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
             <h5>{deck.format}</h5>
           </div>
         ))}
+
 
         <div>
           <button onClick={this.toggleNewDeckForm}>Add new deck</button>
