@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import NewDeckForm from './NewDeckForm'
 import EditUserForm from './EditUserForm'
+import { Redirect } from 'react-router'
 
 class SingleUser extends Component {
   state = {
@@ -9,7 +10,8 @@ class SingleUser extends Component {
       decks: [],
       newDeckForm: false,
       editUserForm: false
-    }
+    },
+    redirect: false,
   };
 
   async componentWillMount() {
@@ -28,11 +30,21 @@ class SingleUser extends Component {
     this.setState({ editUserForm: !this.state.editUserForm })
   }
 
-  remove() {
-    this.props.deleteUser(this.props.user._id)
+  remove = () => {
+    const userId = this.props.match.params.userId
+    this.setState({redirect: true})
+    axios.delete(`/api/users/${userId}`).then(res => {
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   render() {
+
+    if(this.state.redirect === true){
+      return <Redirect to='/users'/>
+    }
+
     return (
       <div>
         <h1>hey from single user</h1>
@@ -41,6 +53,8 @@ class SingleUser extends Component {
           <div key={deck._id}>
             <h3>{deck.name}</h3>
             <h5>{deck.description}</h5>
+            <h5>{deck.archetype}</h5>
+            <h5>{deck.format}</h5>
           </div>
         ))}
 
@@ -50,10 +64,12 @@ class SingleUser extends Component {
         </div>
         <div>
           <button onClick={this.toggleEditUserForm}>Edit this shit</button>
-          {this.state.editUserForm ? <EditUserForm/> : null}
+          {this.state.editUserForm ? <EditUserForm 
+          updateUser={this.updateUser}
+          user={this.state.user}/> : null}
         </div>
         <div>
-          <button onClick={this.props.deleteUser}>Delete this shit</button>
+          <button onClick={this.remove}>Delete this shit</button>
         </div>
       </div>
     );

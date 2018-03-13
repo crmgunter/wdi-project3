@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class UserList extends Component {
+class SingleDeck extends Component {
     render() {
         return (
             <div>
-                <h1>hey</h1>
+                <h1>hey from singledeck!</h1>
             </div>
         );
     }
 }
 
-export default UserList;
+export default SingleDeck;
