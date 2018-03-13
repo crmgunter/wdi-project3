@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import NewUserForm from './NewUserForm'
+import SingleUser from "./SingleUser";
 
 class Users extends Component {
   state = {
@@ -22,7 +23,7 @@ class Users extends Component {
   }
 
   deleteUser = (index) => {
-    const newUsers = [...this.state.users]
+    const newUsers = [ ...this.state.users ]
     newUsers.splice(index, 1)
     this.setState({ users: newUsers})
   }
