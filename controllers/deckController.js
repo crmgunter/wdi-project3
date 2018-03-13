@@ -6,7 +6,6 @@ const Deck = require("../models/deck");
 // INDEX ROUTE
 router.get("/", (req, res) => {
   User.findById(req.params.userId).then((user) => {
-      console.log(user)
       const decks = user.decks
       res.json(decks)
   }).catch(err => {
@@ -33,8 +32,6 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
     const deckId = req.params.id
     const userId = req.params.userId;
-    console.log(userId)
-    console.log(deckId)
     User.findById(userId).then((user) => {
         const deck = user.decks.id(deckId)
       res.json(deck);
