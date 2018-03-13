@@ -25,16 +25,19 @@ class Users extends Component {
     return (
       <div>
         <h1>hey from users</h1>
-        {this.state.users.map(user => (
-          <Link key={user._id} 
-          to={`users/${user._id}`}>
-            <h3>{user.username}</h3>
-          </Link>
-        ))}
         <button onClick={this.toggleNewForm}>Add new user</button>
         {this.state.showForm ? (
             <NewUserForm getAllUsers={this.getAllUsers}/>
         ) : null}
+
+        {this.state.users.map(user => (
+          <Link key={user._id} 
+          to={`users/${user._id}`}>
+            <h3>{user.username}</h3>
+            <img src={user.image} alt="user"/>
+          </Link>
+        ))}
+        
       </div>
     );
   }

@@ -34,6 +34,7 @@ const testDeck = new Deck({
 
 const cameron = new User({
     username: "crmgunter",
+    image: "https://scontent.fatl1-1.fna.fbcdn.net/v/t1.0-9/26220209_10157358172968636_4717839910466707427_n.jpg?oh=f1f9558595efab67894a84e70afbbd9c&oe=5B4460F2",
     decks: [testDeck]
 })
 

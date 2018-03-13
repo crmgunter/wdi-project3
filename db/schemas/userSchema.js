@@ -4,6 +4,7 @@ const deckSchema = require('./deckSchema')
 
 const userSchema = new Schema ({
     username: String,
+    image: String,
     decks: [deckSchema]
 })
 

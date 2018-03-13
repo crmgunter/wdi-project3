@@ -3,7 +3,8 @@ import axios from 'axios'
 
 class NewUserForm extends Component {
   state = {
-    username: ''
+    username: '',
+    image: ''
   };
 
   handleChange = (event) => {
@@ -16,8 +17,10 @@ class NewUserForm extends Component {
   handleSubmit = async (event) => {
       event.preventDefault()
       const payload = {
-          username: this.state.username
+          username: this.state.username,
+          image: this.state.image
       }
+      console.log(this.state)
       await axios.post('/api/users', payload)
       await this.props.getAllUsers()
   }
@@ -30,6 +33,10 @@ class NewUserForm extends Component {
           <div>
             <label htmlFor="username">Username: </label>
             <input onChange={this.handleChange} type="text" name="username" value={this.state.username} />
+          </div>
+          <div>
+            <label htmlFor="image">Image Url: </label>
+            <input onChange={this.handleChange} type="text" name="image" value={this.state.image} />
           </div>
           <button>Submit</button>
         </form>
