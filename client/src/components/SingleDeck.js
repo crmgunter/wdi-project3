@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 class SingleDeck extends Component {
   state = {
     user: {},
-    deck: {},
-    card: {}
+    deck: {
+        cards:[]
+    }
   };
 
   async componentWillMount() {
@@ -13,11 +15,13 @@ class SingleDeck extends Component {
     const deckId = this.props.match.params.deckId;
     const res = await axios.get(`/api/users/${userId}/decks/${deckId}`);
     const userRes = await axios.get(`/api/users/${userId}`);
-    const cardRes = await axios.get(`/api/users/${userId}/decks/${deckId}/cards`)
     const user = userRes.data;
     const deck = res.data;
-    const card = cardRes.data
-    this.setState({ user, deck, card });
+    this.setState({ user, deck });
+  }
+
+  hoverTest = () => {
+      console.log('yay')
   }
 
   render() {
@@ -29,8 +33,13 @@ class SingleDeck extends Component {
         <div>{this.state.deck.description}</div>
         <div>{this.state.deck.archetype}</div>
         <div>{this.state.deck.format}</div>
-        <div>{this.state.card.name}</div>
-        {console.log(this.state.deck.cards)}
+        {this.state.deck.cards.map((card) => (
+            <div key={card._id}>
+                <div onMouseEnter={this.hoverTest}>{card.name}</div>
+                <Link to ={`/users/${this.state.user._id}/decks/${this.state.deck._id}/cards`}>Link to card</Link>
+            </div>  
+        ))}
+        
       </div>
     );
   }

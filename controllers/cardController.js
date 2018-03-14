@@ -34,6 +34,20 @@ router.post("/", (req, res) => {
     })
 });
 
+//SHOW ROUTE
+router.get("/:id", (req, res) => {
+    const deckId = req.params.deckId
+    const userId = req.params.userId;
+    const cardId = req.params.id
+    User.findById(userId).then((user) => {
+        const card = user.decks.id(deckId).cards.id(cardId)
+      res.json(card);
+    }).catch(err => {
+    console.log(err);
+    res.json(err);
+  });
+})
+
 // router.delete('/:id', (req, res) => {
 //     const deckId = req.params.deckId
 //     const userId = req.params.userId
