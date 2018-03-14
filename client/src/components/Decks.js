@@ -28,7 +28,7 @@ class Decks extends Component {
         <h1>Hey from decks!</h1>
         <div>
           <button onClick={this.toggleNewDeckForm}>Add New Deck</button>
-          {this.state.newDeck ? <NewDeckForm/> : null}
+          {this.state.newDeck ? <NewDeckForm userId={this.props.match.params.userId}/> : null}
         </div>
         {this.state.user.username}'s decks
         {this.state.user.decks.map(deck => (

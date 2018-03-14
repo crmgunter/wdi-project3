@@ -54,9 +54,9 @@ class SingleUser extends Component {
         <div>
         <ProfileImage src={this.state.user.image} alt="user"/>
         </div>
+        <Link to={`/users/${this.state.user._id}/decks`}>See user decks</Link>
         {this.state.user.decks.map(deck => (
           <div key={deck._id}>
-            <Link to={`/users/${this.state.user._id}/decks`}>See user decks</Link>
             <h3>{deck.name}</h3>
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
@@ -67,7 +67,7 @@ class SingleUser extends Component {
 
         <div>
           <button onClick={this.toggleNewDeckForm}>Add new deck</button>
-          {this.state.newDeckForm ? <NewDeckForm /> : null}
+          {this.state.newDeckForm ? <NewDeckForm userId={this.props.match.params.user} /> : null}
         </div>
         <div>
           <button onClick={this.toggleEditUserForm}>Edit this shit</button>

@@ -32,9 +32,8 @@ class Users extends Component {
         ) : null}
 
         {this.state.users.map(user => (
-            <div>
-          <Link key={user._id} 
-          to={`users/${user._id}`}>
+            <div key={user._id}>
+          <Link to={`users/${user._id}`}>
             <ProfileImage src={user.image} alt="user"/>
             <h3>{user.username}</h3>
           </Link>

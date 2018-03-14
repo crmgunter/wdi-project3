@@ -3,19 +3,19 @@ import axios from "axios";
 
 class NewDeckForm extends Component {
   state = {
-    user: {
-      name: "",
-      description: "",
-      archetype: "",
-      format: ""
-    }
+    name: "",
+    description: "",
+    archetype: "",
+    format: ""
   };
 
   componentWillMount() {
     this.getAllDecks();
   }
+
   getAllDecks = async () => {
-    const res = await axios.get("/api/users/:userId/decks");
+    const userId = this.props.userId;
+    const res = await axios.get(`/api/users/${userId}/decks`);
     this.setState({ user: res.data });
   };
 
@@ -27,6 +27,8 @@ class NewDeckForm extends Component {
   };
 
   handleSubmit = async event => {
+    const userId = this.props.userId;
+    console.log(userId);
     event.preventDefault();
     const payload = {
       name: this.state.name,
@@ -35,8 +37,8 @@ class NewDeckForm extends Component {
       format: this.state.format
     };
     console.log(this.state);
-    await axios.post("/api/users/:userId/decks", payload);
-    await this.getAllDecks()
+    await axios.post(`/api/users/${userId}/decks`, payload);
+    await this.getAllDecks();
   };
 
   render() {
