@@ -36,7 +36,9 @@ class SingleDeck extends Component {
       <div>
         <h1>Hey from Single Deck!</h1>
         <button onClick={this.toggleAddCard}>Add Card</button>
-        {this.state.addCardForm ? <AddCardForm/> : null}
+        {this.state.addCardForm ? <AddCardForm 
+        userId={this.props.match.params.userId}
+        deckId={this.props.match.params.deckId}/> : null}
         <div>
         {this.state.user.username}'s deck
         </div>

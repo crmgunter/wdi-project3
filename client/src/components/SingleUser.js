@@ -35,8 +35,8 @@ class SingleUser extends Component {
   remove = () => {
     const userId = this.props.match.params.userId
     this.setState({redirect: true})
-    axios.delete(`/api/users/${userId}`).then(res => {
-    }).catch((err) => {
+    axios.delete(`/api/users/${userId}`)
+    .catch((err) => {
       console.log(err)
     })
   }

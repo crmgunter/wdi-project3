@@ -3,15 +3,12 @@ import axios from 'axios'
 
 class EditUserForm extends Component {
     state = {
-        user: {}
+        user: {
+        username: ''
+        }
     }
 
-    handleChange = (event) => {
-        const newUser = { ...this.props.user }
-        newUser[event.target.name] = event.target.value
-        this.setState({ user: newUser })
-        console.log(this.state)
-    }
+    
 
     // componentDidMount() {
     //     const user = this.props
@@ -27,6 +24,13 @@ class EditUserForm extends Component {
         this.setState({ user: res.data})
         })
       }
+
+      handleChange = (event) => {
+        const newUser = { ...this.props.user }
+        newUser[event.target.name] = event.target.value
+        this.setState({ user: newUser })
+        console.log(this.state)
+    }
 
     render() {
         return (
