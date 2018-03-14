@@ -4,6 +4,7 @@ import NewDeckForm from './NewDeckForm'
 import EditUserForm from './EditUserForm'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
+import ProfileImage from './styledComponents/ProfileImage'
 
 class SingleUser extends Component {
   state = {
@@ -50,7 +51,9 @@ class SingleUser extends Component {
       <div>
         <h1>hey from single mom</h1>
         {this.state.user.username}
-        <img src={this.state.user.image} alt="user"/>
+        <div>
+        <ProfileImage src={this.state.user.image} alt="user"/>
+        </div>
         {this.state.user.decks.map(deck => (
           <div key={deck._id}>
             <Link to={`/users/${this.state.user._id}/decks`}>See user decks</Link>
