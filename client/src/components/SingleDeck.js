@@ -36,7 +36,8 @@ class SingleDeck extends Component {
         {this.state.deck.cards.map((card) => (
             <div key={card._id}>
                 <div onMouseEnter={this.hoverTest}>{card.name}</div>
-                <Link to ={`/users/${this.state.user._id}/decks/${this.state.deck._id}/cards`}>Link to card</Link>
+                <div><img src={card.img} alt="card"/></div>
+                <Link to ={`/users/${this.state.user._id}/decks/${this.state.deck._id}/cards/${card._id}`}>Link to card</Link>
             </div>  
         ))}
         
