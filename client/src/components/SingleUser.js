@@ -70,13 +70,13 @@ class SingleUser extends Component {
           {this.state.newDeckForm ? <NewDeckForm userId={this.props.match.params.user} /> : null}
         </div>
         <div>
-          <button onClick={this.toggleEditUserForm}>Edit this shit</button>
+          <button onClick={this.toggleEditUserForm}>Edit</button>
           {this.state.editUserForm ? <EditUserForm 
           updateUser={this.updateUser}
           user={this.state.user}/> : null}
         </div>
         <div>
-          <button onClick={this.remove}>Delete this shit</button>
+          <button onClick={this.remove}>Delete</button>
         </div>
       </div>
     );

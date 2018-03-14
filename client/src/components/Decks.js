@@ -37,6 +37,7 @@ class Decks extends Component {
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
             <h5>{deck.format}</h5>
+            <button>Delete</button>
           </div>
         ))}
       </div>
