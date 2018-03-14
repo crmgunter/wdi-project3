@@ -53,7 +53,8 @@ class SingleUser extends Component {
         <img src={this.state.user.image} alt="user"/>
         {this.state.user.decks.map(deck => (
           <div key={deck._id}>
-            <Link to={`/users/${this.state.user._id}/decks`}><h3>{deck.name}</h3></Link>
+            <Link to={`/users/${this.state.user._id}/decks`}>See user decks</Link>
+            <h3>{deck.name}</h3>
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
             <h5>{deck.format}</h5>
