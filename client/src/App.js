@@ -5,6 +5,7 @@ import SingleUser from './components/SingleUser'
 import NavBar from './components/NavBar'
 import LandingPage from './components/LandingPage'
 import Decks from './components/Decks'
+import SingleDeck from './components/SingleDeck'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path='/users' component={Users}/>
           <Route exact path='/users/:userId' component={SingleUser}/>
           <Route exact path='/users/:userId/decks/' component={Decks}/>
+          <Route exact path='/users/:userId/decks/:deckId' component={SingleDeck}/>
         </Switch>
       </div>
       </Router>
