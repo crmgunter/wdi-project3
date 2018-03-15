@@ -51,7 +51,10 @@ class CardSearch extends Component {
 
         <CardShow 
         name={this.state.name}
-        cards={this.state.cards}/>
+        cards={this.state.cards}
+        userId={this.props.userId}
+        deckId={this.props.deckId}
+        />
       </div>
     );
   }

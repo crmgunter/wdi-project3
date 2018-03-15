@@ -7,7 +7,7 @@ import LandingPage from './components/LandingPage'
 import Decks from './components/Decks'
 import SingleDeck from './components/SingleDeck'
 import SingleCard from './components/SingleCard'
-import ApiCard from './components/ApiCard'
+import CardSearch from './components/CardSearch'
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path='/users/:userId/decks/' component={Decks}/>
           <Route exact path='/users/:userId/decks/:deckId' component={SingleDeck}/>
           <Route exact path='/users/:userId/decks/:deckId/cards/:cardId' component={SingleCard}/>
-          <Route exact path='/users/:userId/decks/:deckId/cards/search/:name' component={ApiCard}/>
+          <Route exact path='/users/:userId/decks/:deckId/cards/search/:name' component={CardSearch}/>
         </Switch>
       </div>
       </Router>

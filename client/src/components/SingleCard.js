@@ -29,7 +29,7 @@ class SingleCard extends Component {
             <div>
                 <h1>hey from single Card!</h1>
                 <div>{this.state.card.name}</div>
-                <div><img src={this.state.card.img} alt="card"/></div>
+                <div><img src={this.state.card.imageUrl} alt="card"/></div>
                 <div>{this.state.card.color}</div>
                 <div>{this.state.card.cmc}</div>
                 <div>{this.state.card.rarity}</div>
