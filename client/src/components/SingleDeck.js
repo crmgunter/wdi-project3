@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
 import AddCardForm from "./AddCardForm";
+import EditDeck from './EditDeck'
 
 
 class SingleDeck extends Component {
@@ -10,7 +11,8 @@ class SingleDeck extends Component {
     deck: {
         cards:[]
     },
-    addCardForm: false
+    addCardForm: false,
+    editDeckForm: false
   };
 
   async componentWillMount() {
@@ -31,6 +33,10 @@ class SingleDeck extends Component {
       this.setState({ addCardForm: !this.state.addCardForm})
   }
 
+  toggleEditDeck = () => {
+      this.setState({ editDeckForm: !this.state.editDeckForm})
+  }
+
   remove = index => {
     const userId = this.props.match.params.userId;
     const deckId = this.props.match.params.deckId;
@@ -48,6 +54,10 @@ class SingleDeck extends Component {
     return (
       <div>
         <h1>Hey from Single Deck!</h1>
+        <button onClick={this.toggleEditDeck}>Edit Deck</button>
+        {this.state.editDeckForm ? <EditDeck 
+        userId={this.props.match.params.userId}
+        deckId={this.props.match.params.deckId}/> : null}
         <button onClick={this.toggleAddCard}>Add Card</button>
         {this.state.addCardForm ? <AddCardForm 
         userId={this.props.match.params.userId}
