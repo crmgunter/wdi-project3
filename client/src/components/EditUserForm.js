@@ -4,7 +4,8 @@ import axios from 'axios'
 class EditUserForm extends Component {
     state = {
         user: {
-        username: ''
+        username: '',
+        image: ''
         }
     }
 
@@ -37,6 +38,7 @@ class EditUserForm extends Component {
             <div>
                 <h1>hiya</h1>
                 <form onSubmit={this.updateUser}>
+                <div>
                 <label htmlFor="name">Name</label>
                 <input type='text' 
                 name='username' 
@@ -44,6 +46,17 @@ class EditUserForm extends Component {
                 placeholder={this.props.user.username}
                 onChange={this.handleChange}
                 />
+                </div>
+                <div>
+                <label htmlFor="image">image URL</label>
+                <input type='text' 
+                name='image' 
+                value={this.state.user.image}
+                placeholder={this.props.user.image}
+                onChange={this.handleChange}
+                />
+                </div>
+
                 <button>Submit</button>
                 </form>
             </div>
