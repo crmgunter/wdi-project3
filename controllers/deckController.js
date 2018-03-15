@@ -68,7 +68,6 @@ router.delete('/:id', (req, res) => {
     .then((user) => {
         const deck = user.decks.id(deckId).remove()
         return user.save()
-        // res.redirect(`/api/users/${userId}/decks`)
     }).catch((err) => {
         console.log(err)
     })

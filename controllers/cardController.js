@@ -48,23 +48,22 @@ router.get("/:id", (req, res) => {
   });
 })
 
-// router.delete('/:id', (req, res) => {
-//     const deckId = req.params.deckId
-//     const userId = req.params.userId
-//     const cardId = req.params.id
-//     User.findById(userId)
-//     .then((user) => {
-//         const deck = user.decks.id(deckId)
-//         deck.cards.id(cardId).remove
-//         return user.save()
-        
-//     }).then((user) => {
-//         res.json(user.decks.id(deckId).cards)
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     })
-// })
+router.delete('/:id', (req, res) => {
+    const deckId = req.params.deckId
+    const userId = req.params.userId
+    const cardId = req.params.id
+    User.findById(userId)
+    .then((user) => {
+        const card = user.decks.id(deckId).cards.id(cardId)
+        card.remove()
+        return user.save()
+    }).then((user) => {
+        res.json(user.decks.id(deckId).cards.id(cardId))
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+})
 
 
 module.exports = router

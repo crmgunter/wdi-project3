@@ -12,9 +12,7 @@ class AddCardForm extends Component {
     handleChange = (event) => {
         const newState = { ...this.state }
         newState[ event.target.name ] = event.target.value
-
         this.setState(newState)
-        console.log(this.state)
     }
 
     handleSubmit = async event => {
