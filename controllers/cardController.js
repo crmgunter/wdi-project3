@@ -76,7 +76,7 @@ router.delete("/:id", (req, res) => {
 
 router.get("/search/:name", (req, res) => {
     name = req.params.name
-  mtg.card.where({name}).then(cards => {
+  mtg.card.where({name, page: 1}).then(cards => {
     console.log(cards)
     res.json(cards)
   });

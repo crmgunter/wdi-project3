@@ -3,12 +3,18 @@ const Schema = mongoose.Schema
 
 const cardSchema = new Schema({
     name: String,
-    color: String,
+    colors: String,
     cmc: String,
     rarity: String,
     set: String,
     artist: String,
-    img: String
+    imageUrl: String,
+    type: String,
+    manaCost: String,
+    text: String,
+    flavor: String,
+    power: String,
+    toughness: String
 })
 
 module.exports = cardSchema

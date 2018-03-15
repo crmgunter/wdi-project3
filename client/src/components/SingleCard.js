@@ -30,12 +30,18 @@ class SingleCard extends Component {
                 <h1>hey from single Card!</h1>
                 <div>{this.state.card.name}</div>
                 <div><img src={this.state.card.imageUrl} alt="card"/></div>
-                <div>{this.state.card.color}</div>
+                <div>{this.state.card.colors}</div>
                 <div>{this.state.card.cmc}</div>
                 <div>{this.state.card.rarity}</div>
                 <div>{this.state.card.set}</div>
                 <div>{this.state.card.artist}</div>
+                <div>{this.state.card.type}</div>
+                <div>{this.state.card.manaCost}</div>
+                <div>{this.state.card.text}</div>
+                <div>{this.state.card.power}</div>
+                <div>{this.state.card.toughness}</div>
             </div>
+           
         );
     }
 }
