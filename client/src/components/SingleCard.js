@@ -9,7 +9,7 @@ class SingleCard extends Component {
       };
     
       async componentWillMount() {
-        const userId = this.props.match.params.userdId;
+        const userId = this.props.match.params.userId;
         console.log(userId)
         const deckId = this.props.match.params.deckId;
         const cardId = this.props.match.params.cardId;

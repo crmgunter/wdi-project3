@@ -6,6 +6,7 @@ const logger = require('morgan')
 const userController = require('./controllers/userController')
 const deckController = require('./controllers/deckController')
 const cardController = require('./controllers/cardController')
+const mtg = require('mtgsdk')
 
 const app = express()
 

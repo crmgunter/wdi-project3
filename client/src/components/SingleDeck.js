@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom'
 import AddCardForm from "./AddCardForm";
 import EditDeck from './EditDeck'
+import ApiCard from "./ApiCard";
 
 
 class SingleDeck extends Component {
@@ -77,6 +78,10 @@ class SingleDeck extends Component {
                 </div>
             </div>  
         ))}
+        {/* <ApiCard userId={this.props.match.params.userId}
+        deckId={this.props.match.params.deckId}
+        name={this.props.match.params.name}
+        /> */}
         
       </div>
     );
