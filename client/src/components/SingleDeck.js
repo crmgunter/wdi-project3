@@ -31,6 +31,19 @@ class SingleDeck extends Component {
       this.setState({ addCardForm: !this.state.addCardForm})
   }
 
+  remove = index => {
+    const userId = this.props.match.params.userId;
+    const deckId = this.props.match.params.deckId;
+    const cardId = this.state.deck.cards[index]._id
+    console.log(cardId);
+    axios
+      .delete(`/api/users/${userId}/decks/${deckId}/cards/${cardId}`)
+      .then(res => {})
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -46,10 +59,11 @@ class SingleDeck extends Component {
         <div>{this.state.deck.description}</div>
         <div>{this.state.deck.archetype}</div>
         <div>{this.state.deck.format}</div>
-        {this.state.deck.cards.map((card) => (
+        {this.state.deck.cards.map((card, index) => (
             <div key={card._id}>
                 <div onMouseEnter={this.hoverTest}>
                 <Link to ={`/users/${this.state.user._id}/decks/${this.state.deck._id}/cards/${card._id}`}>{card.name}</Link>
+                <div onClick={() => this.remove(index)}>X</div>
                 </div>
             </div>  
         ))}
