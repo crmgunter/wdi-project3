@@ -4,24 +4,49 @@ import { Link } from "react-router-dom";
 import AddCardForm from "./AddCardForm";
 import EditDeck from "./EditDeck";
 import CardSearch from "./CardSearch";
-import styled from 'styled-components'
+import styled from "styled-components";
+import ProfileImage from "./styledComponents/ProfileImage";
 
 const FlexContainer = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-margin: 30px;
-`
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+  /* flex-wrap: wrap-reverse; */
+  margin: 30px;
+`;
 
 const FlexLeft = styled.div`
-display: flex;
-flex-direction: column;
-`
+  float: left;
+  /* display: flex; */
+  /* flex-direction: column; */
+  background: #5c4e31;
+  width: 40vw;
+`;
 const FlexRight = styled.div`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+  background: #5c4e31;
+  height: 100vh;
+  width: 50vw;
+  position: fixed; 
+  right: 20px;
+  top: 120px;  
 
+  p {
+    cursor: pointer;
+    color: red;
+  }
+`;
+
+const FlexImage = styled.div`
+  display: flex;
+  margin: auto;
+  text-align: center;
+`;
+
+const CardFlexCenter = styled.div`
+  margin-left: 20px;
+`;
 
 class SingleDeck extends Component {
   state = {
@@ -29,7 +54,8 @@ class SingleDeck extends Component {
     deck: {
       cards: []
     },
-    editDeckForm: false
+    editDeckForm: false,
+    deleteConfirm: false
   };
 
   async componentWillMount() {
@@ -42,16 +68,34 @@ class SingleDeck extends Component {
     this.setState({ user, deck });
   }
 
+  getDeck = async () => {
+    const userId = this.props.match.params.userId;
+    const deckId = this.props.match.params.deckId;
+    const res = await axios.get(`/api/users/${userId}/decks/${deckId}`);
+    const deck = res.data;
+    this.setState({ deck });
+  }
+
+  moveToDeckList = (index) => {
+      const cards = { ...this.state.deck.cards[index]}
+      const newCardList = [ ...this.state.deck.cards]
+
+      newCardList.push(cards)
+
+      this.setState({ cards: newCardList })
+
+  }
+
   hoverTest = () => {
     console.log("yay");
   };
 
-  toggleAddCard = () => {
-    this.setState({ addCardForm: !this.state.addCardForm });
-  };
-
   toggleEditDeck = () => {
     this.setState({ editDeckForm: !this.state.editDeckForm });
+  };
+
+  toggleDeleteConfirm = () => {
+    this.setState({ deleteConfirm: !this.state.deleteConfirm });
   };
 
   remove = index => {
@@ -70,45 +114,51 @@ class SingleDeck extends Component {
   render() {
     return (
       <FlexContainer>
-          <FlexLeft>
-        <div>{this.state.user.username}'s deck</div>
-        <div>{this.state.deck.name}</div>
-        <div>{this.state.deck.description}</div>
-        <div>{this.state.deck.archetype}</div>
-        <div>{this.state.deck.format}</div>
-        <div>
-        <button onClick={this.toggleEditDeck}>Edit Deck</button>
-        {this.state.editDeckForm ? (
-          <EditDeck
+        <FlexLeft>
+          <FlexImage>
+            <ProfileImage
+              src={this.state.user.image}
+              alt={this.state.user.username}
+            />
+          </FlexImage>
+          <div>{this.state.user.username}</div>
+          <div>{this.state.deck.name}</div>
+          <div>{this.state.deck.description}</div>
+          <div>{this.state.deck.archetype}</div>
+          <div>{this.state.deck.format}</div>
+          <div>
+            <button onClick={this.toggleEditDeck}>Edit Deck</button>
+            {this.state.editDeckForm ? (
+              <EditDeck
+                userId={this.props.match.params.userId}
+                deckId={this.props.match.params.deckId}
+              />
+            ) : null}
+          </div>
+          <CardSearch
             userId={this.props.match.params.userId}
             deckId={this.props.match.params.deckId}
+            move={this.moveToDeckList}
+            getDeck = {this.getDeck}
           />
-        ) : null}
-        </div>
-        <CardSearch
-          userId={this.props.match.params.userId}
-          deckId={this.props.match.params.deckId}
-        />
         </FlexLeft>
-        
-        
-        
+
         <FlexRight>
+          <CardFlexCenter>
             <h1>Cards</h1>
-        {this.state.deck.cards.map((card, index) => (
-          <div key={card._id}>
-            {/* <div onMouseEnter={this.hoverTest}> */}
-              <Link
-                to={`/users/${this.state.user._id}/decks/${
-                  this.state.deck._id
-                }/cards/${card._id}`}
-              >
-                {card.name}
-              </Link>
-              <div onClick={() => this.remove(index)}>X</div>
-            </div>
-        //   </div>
-        ))}
+            {this.state.deck.cards.map((card, index) => (
+              <div key={card._id}>
+                <p onClick={() => this.remove(index)}>X</p>
+                <Link
+                  to={`/users/${this.state.user._id}/decks/${
+                    this.state.deck._id
+                  }/cards/${card._id}`}
+                >
+                  {card.name}
+                </Link>
+              </div>
+            ))}
+          </CardFlexCenter>
         </FlexRight>
       </FlexContainer>
     );

@@ -54,6 +54,8 @@ class CardSearch extends Component {
         cards={this.state.cards}
         userId={this.props.userId}
         deckId={this.props.deckId}
+        move={this.props.move}
+        getDeck={this.props.getDeck}
         />
       </div>
     );

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const CenterContent = styled.div`
+text-align: center;
+`
 
 class CardShow extends Component {
   addCardToDeck = async card => {
@@ -25,24 +30,23 @@ class CardShow extends Component {
     };
     console.log(payload);
     await axios.post(`/api/users/${userId}/decks/${deckId}/cards`, payload);
+    this.props.getDeck()
+
   };
 
   render() {
     return (
-      <div>
+      <CenterContent>
         {this.props.cards.map((card, index) => (
           <div key={index}>
-          {/* <Link
-                to={`/users/${this.props.userId}/decks/${this.props.deckId}/cards/${card._id}`}> */}
-            {card.name}
-            {/* </Link> */}
-            <img src={card.imageUrl} alt={card.name} />
-            <button onClick={() => this.addCardToDeck(card)}>
+           <div> <img src={card.imageUrl} alt={card.name} /> </div>
+            <div><button onClick={() => this.addCardToDeck(card)}>
               Add To Deck
             </button>
+            </div>
           </div>
         ))}
-      </div>
+      </CenterContent>
     );
   }
 }

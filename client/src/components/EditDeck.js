@@ -33,7 +33,6 @@ class EditDeck extends Component {
   render() {
     return (
       <div>
-        <h1>FUCK</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">name: </label>
@@ -42,11 +41,12 @@ class EditDeck extends Component {
               type="text"
               name="name"
               value={this.state.name}
+              placeholder={this.state.name}
             />
           </div>
           <div>
             <label htmlFor="description">Description: </label>
-            <input
+            <textarea
               onChange={this.handleChange}
               type="text"
               name="description"

@@ -11,18 +11,18 @@ import SingleCard from './components/SingleCard'
 import CardSearch from './components/CardSearch'
 import styled from 'styled-components'
 // below is how to import google fonts
-// injectGlobal`
-// @import url('https://fonts.googleapis.com/css?family=Roboto');
-// >>>font-family: 'Roboto', sans-serif;<<<
-//`
+injectGlobal`
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+`
 const GeneralStyles = styled.body`
 /* text-align: center; */
 margin: 0;
+font-family: 'Roboto', sans-serif;
 
 a {
     margin: auto;
     text-decoration: none;
-    color: black;
+    color: green;
   }
 
   button {
