@@ -8,11 +8,12 @@ class Decks extends Component {
     user: {
       decks: []
     },
-    newDeck: false
+    newDeck: false,
+    deleteConfirm: false
   };
 
   async componentWillMount() {
-      //UNDO STOP HERE
+    //UNDO STOP HERE
     const userId = this.props.userId;
     const res = await axios.get(`/api/users/${userId}`);
     const user = res.data;
@@ -22,6 +23,10 @@ class Decks extends Component {
 
   toggleNewDeckForm = () => {
     this.setState({ newDeck: !this.state.newDeck });
+  };
+
+  toggleDeleteConfirm = i => {
+    this.setState({ deleteConfirm: !this.state.deleteConfirm });
   };
 
   remove = index => {
@@ -35,8 +40,6 @@ class Decks extends Component {
         console.log(err);
       });
   };
-
-
 
   render() {
     return (
@@ -57,7 +60,14 @@ class Decks extends Component {
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
             <h5>{deck.format}</h5>
-            <button onClick={() => this.remove(i)}>Delete</button>
+            <button onClick={() => this.toggleDeleteConfirm(i)}>Delete</button>
+            {this.state.deleteConfirm ? (
+              <div>
+                <p>Are you sure you want to delete this deck?</p>
+                <button onClick={()=> this.remove(i)}>Yes, this deck is terrible</button>
+                <button onClick={()=> this.toggleDeleteConfirm(i)}>Nevermind</button>
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

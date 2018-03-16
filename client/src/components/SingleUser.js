@@ -99,7 +99,7 @@ class SingleUser extends Component {
                 <div>
                 <p>Are you sure you want to delete this user?</p>
               <button onClick={this.remove}>Yes</button>
-              <button>No</button>
+              <button onClick={this.toggleDeleteConfirm}>Nevermind</button>
               </div>
             ) 
               : null}
