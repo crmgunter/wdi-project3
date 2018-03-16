@@ -45,7 +45,7 @@ class Decks extends Component {
         <div>
           <button onClick={this.toggleNewDeckForm}>Add New Deck</button>
           {this.state.newDeck ? (
-            <NewDeckForm userId={this.props.match.params.userId} />
+            <NewDeckForm userId={this.props.userId} />
           ) : null}
         </div>
         {this.state.user.username}'s decks

@@ -43,7 +43,7 @@ class App extends Component {
           <Route exact path='/' component={LandingPage}/>
           <Route exact path='/users' component={Users}/>
           <Route exact path='/users/:userId' component={SingleUser}/>
-          <Route exact path='/users/:userId/decks/' component={Decks}/>
+          {/* <Route exact path='/users/:userId/decks/' component={Decks}/> */}
           <Route exact path='/users/:userId/decks/:deckId' component={SingleDeck}/>
           <Route exact path='/users/:userId/decks/:deckId/cards/:cardId' component={SingleCard}/>
           <Route exact path='/users/:userId/decks/:deckId/cards/search/:name' component={CardSearch}/>

@@ -31,7 +31,7 @@ class SingleUser extends Component {
       newDeckForm: false,
       editUserForm: false
     },
-    redirect: false
+    redirect: false,
   };
 
   async componentDidMount() {
@@ -108,7 +108,9 @@ class SingleUser extends Component {
           <button onClick={this.remove}>Delete</button>
         </div>
 
-          <Decks userId={this.props.match.params.userId}/>
+          <Decks userId={this.props.match.params.userId}
+          toggleNewDeckForm={this.toggleNewDeckForm}
+          newDeck={this.state.newDeck}/>
 
       </FlexMaster>
     );
