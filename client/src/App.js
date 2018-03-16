@@ -16,8 +16,19 @@ import styled from 'styled-components'
 // >>>font-family: 'Roboto', sans-serif;<<<
 //`
 const GeneralStyles = styled.body`
-text-align: center;
+/* text-align: center; */
 margin: 0;
+
+a {
+    margin: auto;
+    text-decoration: none;
+    color: black;
+  }
+
+  button {
+    border-radius: 5px;
+    height: 30px;
+  }
 `
 
 

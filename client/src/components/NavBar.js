@@ -12,12 +12,12 @@ const Nav = styled.div`
     margin: auto;
   }
 
-  a {
-    margin: auto;
-  }
 `;
 const NavLink = styled.div`
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 20px 0 0;
 `;
 
 class NavBar extends Component {

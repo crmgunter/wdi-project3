@@ -12,7 +12,8 @@ class Decks extends Component {
   };
 
   async componentWillMount() {
-    const userId = this.props.match.params.userId;
+      //UNDO STOP HERE
+    const userId = this.props.userId;
     const res = await axios.get(`/api/users/${userId}`);
     const user = res.data;
     this.setState({ user });
