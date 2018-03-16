@@ -4,6 +4,21 @@ import { Link } from "react-router-dom";
 import AddCardForm from "./AddCardForm";
 import EditDeck from "./EditDeck";
 import CardSearch from "./CardSearch";
+import styled from 'styled-components'
+
+const FlexContainer = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+`
+
+const FlexLeft = styled.div`
+display: flex;
+flex-direction: column;
+
+`
+
+
 
 class SingleDeck extends Component {
   state = {
@@ -11,7 +26,6 @@ class SingleDeck extends Component {
     deck: {
       cards: []
     },
-    addCardForm: false,
     editDeckForm: false
   };
 
@@ -52,8 +66,14 @@ class SingleDeck extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hey from Single Deck!</h1>
+      <FlexContainer>
+          <FlexLeft>
+        <div>{this.state.user.username}'s deck</div>
+        <div>{this.state.deck.name}</div>
+        <div>{this.state.deck.description}</div>
+        <div>{this.state.deck.archetype}</div>
+        <div>{this.state.deck.format}</div>
+        <div>
         <button onClick={this.toggleEditDeck}>Edit Deck</button>
         {this.state.editDeckForm ? (
           <EditDeck
@@ -61,25 +81,17 @@ class SingleDeck extends Component {
             deckId={this.props.match.params.deckId}
           />
         ) : null}
-        <button onClick={this.toggleAddCard}>Add Card</button>
-        {this.state.addCardForm ? (
-          <AddCardForm
-            userId={this.props.match.params.userId}
-            deckId={this.props.match.params.deckId}
-          />
-        ) : null}
+        </div>
         <CardSearch
-          // userDeck={this.state.user}
-          // deckToAddCard={this.state.deck}
-          // cardsToAdd={this.state.deck.cards}
           userId={this.props.match.params.userId}
           deckId={this.props.match.params.deckId}
         />
-        <div>{this.state.user.username}'s deck</div>
-        <div>{this.state.deck.name}</div>
-        <div>{this.state.deck.description}</div>
-        <div>{this.state.deck.archetype}</div>
-        <div>{this.state.deck.format}</div>
+        </FlexLeft>
+        
+        
+        
+        <div>
+            <h1>Cards</h1>
         {this.state.deck.cards.map((card, index) => (
           <div key={card._id}>
             {/* <div onMouseEnter={this.hoverTest}> */}
@@ -94,7 +106,8 @@ class SingleDeck extends Component {
             </div>
         //   </div>
         ))}
-      </div>
+        </div>
+      </FlexContainer>
     );
   }
 }

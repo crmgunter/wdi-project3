@@ -25,7 +25,7 @@ class Decks extends Component {
   };
 
   remove = index => {
-    const userId = this.props.match.params.userId;
+    const userId = this.props.userId;
     const deckId = this.state.user.decks[index]._id;
     console.log(deckId);
     axios

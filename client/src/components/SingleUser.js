@@ -6,23 +6,25 @@ import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import ProfileImage from "./styledComponents/ProfileImage";
 import styled from "styled-components";
-import Decks from './Decks'
+import Decks from "./Decks";
 
 const FlexMaster = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 const FlexLeft = styled.div`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`;
 
 const FlexRight = styled.div`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`;
 
 class SingleUser extends Component {
   state = {
@@ -31,7 +33,7 @@ class SingleUser extends Component {
       newDeckForm: false,
       editUserForm: false
     },
-    redirect: false,
+    redirect: false
   };
 
   async componentDidMount() {
@@ -77,19 +79,22 @@ class SingleUser extends Component {
             </div>
           </div>
           <div>
-          <Link to={`/users/${this.state.user._id}/decks`}>
-            <button>See user decks</button>
-          </Link>
+            <Link to={`/users/${this.state.user._id}/decks`}>
+              <button>See user decks</button>
+            </Link>
           </div>
           <div>
-          <button onClick={this.toggleEditUserForm}>Edit User</button>
-          {this.state.editUserForm ? (
-            <EditUserForm updateUser={this.updateUser} user={this.state.user} />
-          ) : null}
-        </div>
-        <div>
-          <button onClick={this.remove}>Delete</button>
-        </div>
+            <button onClick={this.toggleEditUserForm}>Edit User</button>
+            {this.state.editUserForm ? (
+              <EditUserForm
+                updateUser={this.updateUser}
+                user={this.state.user}
+              />
+            ) : null}
+          </div>
+          <div>
+            <button onClick={this.remove}>Delete</button>
+          </div>
           {this.state.user.decks.map(deck => (
             <div key={deck._id}>
               <h3>{deck.name}</h3>
@@ -100,10 +105,13 @@ class SingleUser extends Component {
           ))}
         </FlexLeft>
 
-          <Decks userId={this.props.match.params.userId}
-          toggleNewDeckForm={this.toggleNewDeckForm}
-          newDeck={this.state.newDeck}/>
-
+        <FlexRight>
+          <Decks
+            userId={this.props.match.params.userId}
+            toggleNewDeckForm={this.toggleNewDeckForm}
+            newDeck={this.state.newDeck}
+          />
+        </FlexRight>
       </FlexMaster>
     );
   }

@@ -30,7 +30,6 @@ class CardShow extends Component {
   render() {
     return (
       <div>
-        <h1>hey from card show</h1>
         {this.props.cards.map((card, index) => (
           <div key={index}>
           {/* <Link
