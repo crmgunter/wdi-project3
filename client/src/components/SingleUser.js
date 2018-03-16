@@ -17,13 +17,13 @@ const FlexMaster = styled.div`
 const FlexLeft = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
 `;
 
 const FlexRight = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  width: 65vw;
+  align-items: center;
 `;
 
 class SingleUser extends Component {
@@ -79,11 +79,6 @@ class SingleUser extends Component {
             </div>
           </div>
           <div>
-            <Link to={`/users/${this.state.user._id}/decks`}>
-              <button>See user decks</button>
-            </Link>
-          </div>
-          <div>
             <button onClick={this.toggleEditUserForm}>Edit User</button>
             {this.state.editUserForm ? (
               <EditUserForm
@@ -108,6 +103,7 @@ class SingleUser extends Component {
         <FlexRight>
           <Decks
             userId={this.props.match.params.userId}
+            deckId={this.props.match.params.deckId}
             toggleNewDeckForm={this.toggleNewDeckForm}
             newDeck={this.state.newDeck}
           />

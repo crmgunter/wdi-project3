@@ -15,9 +15,11 @@ justify-content: space-around;
 const FlexLeft = styled.div`
 display: flex;
 flex-direction: column;
-
 `
-
+const FlexRight = styled.div`
+display: flex;
+flex-direction: column;
+`
 
 
 class SingleDeck extends Component {
@@ -90,7 +92,7 @@ class SingleDeck extends Component {
         
         
         
-        <div>
+        <FlexRight>
             <h1>Cards</h1>
         {this.state.deck.cards.map((card, index) => (
           <div key={card._id}>
@@ -106,7 +108,7 @@ class SingleDeck extends Component {
             </div>
         //   </div>
         ))}
-        </div>
+        </FlexRight>
       </FlexContainer>
     );
   }
