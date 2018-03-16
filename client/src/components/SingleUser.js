@@ -87,6 +87,9 @@ class SingleUser extends Component {
             <EditUserForm updateUser={this.updateUser} user={this.state.user} />
           ) : null}
         </div>
+        <div>
+          <button onClick={this.remove}>Delete</button>
+        </div>
           {this.state.user.decks.map(deck => (
             <div key={deck._id}>
               <h3>{deck.name}</h3>
@@ -96,17 +99,6 @@ class SingleUser extends Component {
             </div>
           ))}
         </FlexLeft>
-
-        <div>
-          <button onClick={this.toggleNewDeckForm}>Add new deck</button>
-          {this.state.newDeckForm ? (
-            <NewDeckForm userId={this.props.match.params.user} />
-          ) : null}
-        </div>
-        
-        <div>
-          <button onClick={this.remove}>Delete</button>
-        </div>
 
           <Decks userId={this.props.match.params.userId}
           toggleNewDeckForm={this.toggleNewDeckForm}

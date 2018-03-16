@@ -36,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div>
         <GeneralStyles>
         <NavBar/>
         <Switch>
@@ -49,7 +48,6 @@ class App extends Component {
           <Route exact path='/users/:userId/decks/:deckId/cards/search/:name' component={CardSearch}/>
         </Switch>
         </GeneralStyles>
-      </div>
       </Router>
     );
   }
