@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.div`
-  background: #967b56;
+  background: rgba(0, 0, 0, .8);
   height: 15vh;
   display: flex;
   box-shadow: 0 5px 5px #967b56;
 
   h1 {
     margin: auto;
+    font-family: 'MedievalSharp', cursive;
   }
 
 `;

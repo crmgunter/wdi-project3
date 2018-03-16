@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CardShow from "./CardShow";
+import { Button } from 'semantic-ui-react'
 
 class CardSearch extends Component {
   state = {
@@ -34,17 +35,19 @@ class CardSearch extends Component {
     return (
       <div>
         <div>
-          <h1>hey from card search</h1>
+          <p>Search for card by name:</p>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 name="name"
                 onChange={this.handleChange}
+                placeholder="Search for card by name"
                 value={this.state.name}
               />
-              <button>Submit</button>
+              <div>
+              <Button>Submit</Button>
+              </div>
             </div>
           </form>
         </div>
@@ -54,7 +57,6 @@ class CardSearch extends Component {
         cards={this.state.cards}
         userId={this.props.userId}
         deckId={this.props.deckId}
-        move={this.props.move}
         getDeck={this.props.getDeck}
         />
       </div>

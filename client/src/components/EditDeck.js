@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios'
-
+import { Button } from 'semantic-ui-react'
+ 
 class EditDeck extends Component {
   state = {
     name: "",
@@ -71,7 +72,7 @@ class EditDeck extends Component {
               value={this.state.format}
             />
           </div>
-          <button>Submit</button>
+          <Button>Submit</Button>
         </form>
       </div>
     );

@@ -10,24 +10,25 @@ import SingleDeck from './components/SingleDeck'
 import SingleCard from './components/SingleCard'
 import CardSearch from './components/CardSearch'
 import styled from 'styled-components'
+import 'semantic-ui-css/semantic.min.css';
+
 // below is how to import google fonts
 injectGlobal`
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
 `
 const GeneralStyles = styled.body`
 /* text-align: center; */
 margin: 0;
-font-family: 'Roboto', sans-serif;
+font-family: 'IBM Plex Mono', monospace;
+background: #967b56;
+color: white;
+height: 100vh;
 
 a {
     margin: auto;
     text-decoration: none;
-    color: green;
-  }
-
-  button {
-    border-radius: 5px;
-    height: 30px;
+    color: #967b56;
   }
 `
 

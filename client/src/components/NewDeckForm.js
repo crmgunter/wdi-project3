@@ -44,7 +44,6 @@ class NewDeckForm extends Component {
   render() {
     return (
       <div>
-        <h1>Hey!</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="name">name: </label>
@@ -52,6 +51,7 @@ class NewDeckForm extends Component {
               onChange={this.handleChange}
               type="text"
               name="name"
+              required
               value={this.state.name}
             />
           </div>
@@ -70,6 +70,7 @@ class NewDeckForm extends Component {
               onChange={this.handleChange}
               type="text"
               name="archetype"
+              required
               value={this.state.archetype}
             />
           </div>
@@ -79,6 +80,7 @@ class NewDeckForm extends Component {
               onChange={this.handleChange}
               type="text"
               name="format"
+              required
               value={this.state.format}
             />
           </div>

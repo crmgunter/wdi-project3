@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import NewDeckForm from "./NewDeckForm";
 import { Link } from "react-router-dom";
+import { Button } from 'semantic-ui-react'
 
 class Decks extends Component {
   state = {
@@ -46,7 +47,7 @@ class Decks extends Component {
       <div>
         <h1>Hey from decks!</h1>
         <div>
-          <button onClick={this.toggleNewDeckForm}>Add New Deck</button>
+          <Button onClick={this.toggleNewDeckForm}>Add New Deck</Button>
           {this.state.newDeck ? (
             <NewDeckForm userId={this.props.userId} />
           ) : null}
@@ -60,12 +61,12 @@ class Decks extends Component {
             <h5>{deck.description}</h5>
             <h5>{deck.archetype}</h5>
             <h5>{deck.format}</h5>
-            <button onClick={() => this.toggleDeleteConfirm(i)}>Delete</button>
+            <Button onClick={() => this.toggleDeleteConfirm(i)}>Delete</Button>
             {this.state.deleteConfirm ? (
               <div>
                 <p>Are you sure you want to delete this deck?</p>
-                <button onClick={()=> this.remove(i)}>Yes, this deck is terrible</button>
-                <button onClick={()=> this.toggleDeleteConfirm(i)}>Nevermind</button>
+                <Button onClick={()=> this.remove(i)}>Yes, this deck is terrible</Button>
+                <Button onClick={()=> this.toggleDeleteConfirm(i)}>Nevermind</Button>
               </div>
             ) : null}
           </div>

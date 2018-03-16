@@ -30,6 +30,8 @@
     "mongoose": "^5.0.9",
     "morgan": "^1.9.0",
     "mtgsdk": "^0.3.0",
-    "npm": "^5.7.1"
+    "npm": "^5.7.1",
+    "semantic-ui-css": "^2.3.0",
+    "semantic-ui-react": "^0.78.3"
   }
 }

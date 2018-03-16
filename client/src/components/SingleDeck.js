@@ -1,37 +1,43 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddCardForm from "./AddCardForm";
 import EditDeck from "./EditDeck";
 import CardSearch from "./CardSearch";
 import styled from "styled-components";
 import ProfileImage from "./styledComponents/ProfileImage";
+import { Button } from "semantic-ui-react";
 
 const FlexContainer = styled.div`
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
-  /* flex-wrap: wrap-reverse; */
   margin: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const FlexLeft = styled.div`
-  float: left;
-  /* display: flex; */
-  /* flex-direction: column; */
-  background: #5c4e31;
-  width: 40vw;
-`;
-const FlexRight = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+  float: left;
+  background: rgba(0, 0, 0, 0.8);
+  width: 40vw;
+  border-radius: 6px;
+  box-shadow: 6px 6px 6px black;
+`;
+
+const FlexRight = styled.div`
+  display: flex;
+  flex-direction: row;
   background: #5c4e31;
   height: 100vh;
   width: 50vw;
-  position: fixed; 
+  position: fixed;
   right: 20px;
-  top: 120px;  
-
+  top: 128px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  box-shadow: 6px 6px 6px black; 
+  
   p {
     cursor: pointer;
     color: red;
@@ -39,13 +45,15 @@ const FlexRight = styled.div`
 `;
 
 const FlexImage = styled.div`
-  display: flex;
   margin: auto;
   text-align: center;
 `;
 
 const CardFlexCenter = styled.div`
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 class SingleDeck extends Component {
@@ -74,7 +82,7 @@ class SingleDeck extends Component {
     const res = await axios.get(`/api/users/${userId}/decks/${deckId}`);
     const deck = res.data;
     this.setState({ deck });
-  }
+  };
 
   hoverTest = () => {
     console.log("yay");
@@ -93,10 +101,10 @@ class SingleDeck extends Component {
     const deckId = this.props.match.params.deckId;
     const cardId = this.state.deck.cards[index]._id;
     console.log(cardId);
-    await axios.delete(`/api/users/${userId}/decks/${deckId}/cards/${cardId}`)
-    const res = await axios.get(`/api/users/${userId}/decks/${deckId}`)
-    const deck = res.data
-    this.setState({ deck })
+    await axios.delete(`/api/users/${userId}/decks/${deckId}/cards/${cardId}`);
+    const res = await axios.get(`/api/users/${userId}/decks/${deckId}`);
+    const deck = res.data;
+    this.setState({ deck });
   };
 
   render() {
@@ -115,7 +123,7 @@ class SingleDeck extends Component {
           <div>{this.state.deck.archetype}</div>
           <div>{this.state.deck.format}</div>
           <div>
-            <button onClick={this.toggleEditDeck}>Edit Deck</button>
+            <Button onClick={this.toggleEditDeck}>Edit Deck</Button>
             {this.state.editDeckForm ? (
               <EditDeck
                 userId={this.props.match.params.userId}

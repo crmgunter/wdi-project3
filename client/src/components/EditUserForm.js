@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Button } from 'semantic-ui-react'
 
 class EditUserForm extends Component {
     state = {
@@ -37,12 +38,12 @@ class EditUserForm extends Component {
     render() {
         return (
             <div>
-                <h1>hiya</h1>
                 <form onSubmit={this.updateUser}>
                 <div>
                 <label htmlFor="name">Name</label>
                 <input type='text' 
                 name='username' 
+                required
                 value={this.state.user.username}
                 placeholder={this.props.user.username}
                 onChange={this.handleChange}
@@ -51,14 +52,14 @@ class EditUserForm extends Component {
                 <div>
                 <label htmlFor="image">image URL</label>
                 <input type='text' 
-                name='image' 
+                name='image'
                 value={this.state.user.image}
                 placeholder={this.props.user.image}
                 onChange={this.handleChange}
                 />
                 </div>
 
-                <button>Submit</button>
+                <Button>Submit</Button>
                 </form>
             </div>
         );

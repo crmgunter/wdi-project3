@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Button } from 'semantic-ui-react'
 
 const CenterContent = styled.div`
 text-align: center;
@@ -40,9 +41,9 @@ class CardShow extends Component {
         {this.props.cards.map((card, index) => (
           <div key={index}>
            <div> <img src={card.imageUrl} alt={card.name} /> </div>
-            <div><button onClick={() => this.addCardToDeck(card)}>
+            <div><Button onClick={() => this.addCardToDeck(card)}>
               Add To Deck
-            </button>
+            </Button>
             </div>
           </div>
         ))}

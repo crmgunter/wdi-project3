@@ -4,6 +4,7 @@ import axios from "axios";
 import NewUserForm from "./NewUserForm";
 import ProfileImage from "./styledComponents/ProfileImage";
 import styled from "styled-components";
+import { Button } from 'semantic-ui-react'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -25,6 +26,10 @@ height: 500px;
 h3 {
   margin: 70px 0 0 0;
 }
+`
+const ButtonPosition = styled.div`
+text-align: center;
+margin: 20px;
 `
 
 
@@ -50,9 +55,9 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <h1>hey from users</h1>
-
-        <button onClick={this.toggleNewForm}>Add new user</button>
+        <ButtonPosition>
+        <Button onClick={this.toggleNewForm}>Add new user</Button>
+        </ButtonPosition>
         {this.state.showForm ? (
           <NewUserForm getAllUsers={this.getAllUsers} />
         ) : null}
