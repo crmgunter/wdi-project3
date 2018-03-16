@@ -35,16 +35,16 @@ class SingleCard extends Component {
                 <h1>hey from single Card!</h1>
                 <div>{this.state.card.name}</div>
                 <div><img src={this.state.card.imageUrl} alt="card"/></div>
-                <div>{this.state.card.colors}</div>
-                <div>{this.state.card.cmc}</div>
-                <div>{this.state.card.rarity}</div>
-                <div>{this.state.card.set}</div>
-                <div>{this.state.card.artist}</div>
-                <div>{this.state.card.type}</div>
-                <div>{this.state.card.manaCost}</div>
-                <div>{this.state.card.text}</div>
-                <div>{this.state.card.power}</div>
-                <div>{this.state.card.toughness}</div>
+                <div><p>Colors: {this.state.card.colors}</p></div>
+                <div><p>Converted Mana Cost: {this.state.card.cmc}</p></div>
+                <div>Rarity: {this.state.card.rarity}</div>
+                <div>Set: {this.state.card.set}</div>
+                <div>Artist: {this.state.card.artist}</div>
+                <div>Type: {this.state.card.type}</div>
+                <div>Mana Cost: {this.state.card.manaCost}</div>
+                <div>Card Text: {this.state.card.text}</div>
+                <div>Power: {this.state.card.power}</div>
+                <div>Toughness: {this.state.card.toughness}</div>
             </CardContainer>
            
         );
