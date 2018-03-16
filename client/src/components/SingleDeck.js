@@ -76,16 +76,6 @@ class SingleDeck extends Component {
     this.setState({ deck });
   }
 
-  moveToDeckList = (index) => {
-      const cards = { ...this.state.deck.cards[index]}
-      const newCardList = [ ...this.state.deck.cards]
-
-      newCardList.push(cards)
-
-      this.setState({ cards: newCardList })
-
-  }
-
   hoverTest = () => {
     console.log("yay");
   };
@@ -98,17 +88,15 @@ class SingleDeck extends Component {
     this.setState({ deleteConfirm: !this.state.deleteConfirm });
   };
 
-  remove = index => {
+  remove = async index => {
     const userId = this.props.match.params.userId;
     const deckId = this.props.match.params.deckId;
     const cardId = this.state.deck.cards[index]._id;
     console.log(cardId);
-    axios
-      .delete(`/api/users/${userId}/decks/${deckId}/cards/${cardId}`)
-      .then(res => {})
-      .catch(err => {
-        console.log(err);
-      });
+    await axios.delete(`/api/users/${userId}/decks/${deckId}/cards/${cardId}`)
+    const res = await axios.get(`/api/users/${userId}/decks/${deckId}`)
+    const deck = res.data
+    this.setState({ deck })
   };
 
   render() {
@@ -138,8 +126,7 @@ class SingleDeck extends Component {
           <CardSearch
             userId={this.props.match.params.userId}
             deckId={this.props.match.params.deckId}
-            move={this.moveToDeckList}
-            getDeck = {this.getDeck}
+            getDeck={this.getDeck}
           />
         </FlexLeft>
 
