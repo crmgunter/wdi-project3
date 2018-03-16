@@ -6,6 +6,7 @@ import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import ProfileImage from './styledComponents/ProfileImage'
 
+
 class SingleUser extends Component {
   state = {
     user: {
@@ -16,7 +17,11 @@ class SingleUser extends Component {
     redirect: false,
   };
 
-  async componentWillMount() {
+  async componentDidMount() {
+    this.updateUser()
+  }
+
+  updateUser = async () => {
     const userId = this.props.match.params.userId;
     const res = await axios.get(`/api/users/${userId}`);
     const user = res.data;

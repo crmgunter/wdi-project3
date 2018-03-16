@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 class CardShow extends Component {
   addCardToDeck = async card => {
@@ -31,8 +32,11 @@ class CardShow extends Component {
       <div>
         <h1>hey from card show</h1>
         {this.props.cards.map((card, index) => (
-          <div>
+          <div key={index}>
+          {/* <Link
+                to={`/users/${this.props.userId}/decks/${this.props.deckId}/cards/${card._id}`}> */}
             {card.name}
+            {/* </Link> */}
             <img src={card.imageUrl} alt={card.name} />
             <button onClick={() => this.addCardToDeck(card)}>
               Add To Deck

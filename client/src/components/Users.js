@@ -1,8 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import NewUserForm from './NewUserForm'
-import ProfileImage from './styledComponents/ProfileImage'
+import NewUserForm from "./NewUserForm";
+import ProfileImage from "./styledComponents/ProfileImage";
+import styled from "styled-components";
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+`;
+
+const FlexContent = styled.div`
+background-size: cover;
+flex-direction: row;
+margin: 20px;
+background: url('http://www.spelplus.com/postpic/2011/12/blank-magic-card-template_314403.jpg');
+background-size: 100%;
+background-repeat: no-repeat;
+width: 300px;
+height: 500px;
+
+h3 {
+  margin: 70px 0 0 0;
+}
+`
+
+
 
 class Users extends Component {
   state = {
@@ -19,27 +44,31 @@ class Users extends Component {
   };
 
   toggleNewForm = () => {
-      this.setState({ showForm: !this.state.showForm })
-  }
+    this.setState({ showForm: !this.state.showForm });
+  };
 
   render() {
     return (
-        <div>
+      <div>
         <h1>hey from users</h1>
+
         <button onClick={this.toggleNewForm}>Add new user</button>
         {this.state.showForm ? (
-            <NewUserForm getAllUsers={this.getAllUsers}/>
+          <NewUserForm getAllUsers={this.getAllUsers} />
         ) : null}
-
+        <FlexContainer>
         {this.state.users.map(user => (
-            <div key={user._id}>
-          <Link to={`users/${user._id}`}>
-            <ProfileImage src={user.image} alt="user"/>
-            <h3>{user.username}</h3>
-          </Link>
+          <div key={user._id}>
+            <FlexContent>
+              <Link to={`users/${user._id}`}>
+                <ProfileImage src={user.image} alt="user" />
+                <h3>{user.username}</h3>
+              </Link>
+            </FlexContent>
           </div>
         ))}
-        </div>
+        </FlexContainer>
+      </div>
     );
   }
 }

@@ -11,20 +11,21 @@ class EditUserForm extends Component {
 
     
 
-    // componentDidMount() {
-    //     const user = this.props
-    //     this.setState({ user })
-    // }
+    componentDidMount() {
+        this.updateUser()
+    }
 
     updateUser = (event) => {
-        event.preventDefault()
         const userId = this.props.user._id
         console.log(userId)
         const payload = this.state.user
         axios.patch(`/api/users/${userId}`, payload).then(res => {
         this.setState({ user: res.data})
         })
+        // this.props.updateUser()
       }
+
+
 
       handleChange = (event) => {
         const newUser = { ...this.props.user }

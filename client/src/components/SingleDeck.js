@@ -82,7 +82,7 @@ class SingleDeck extends Component {
         <div>{this.state.deck.format}</div>
         {this.state.deck.cards.map((card, index) => (
           <div key={card._id}>
-            <div onMouseEnter={this.hoverTest}>
+            {/* <div onMouseEnter={this.hoverTest}> */}
               <Link
                 to={`/users/${this.state.user._id}/decks/${
                   this.state.deck._id
@@ -92,7 +92,7 @@ class SingleDeck extends Component {
               </Link>
               <div onClick={() => this.remove(index)}>X</div>
             </div>
-          </div>
+        //   </div>
         ))}
       </div>
     );
