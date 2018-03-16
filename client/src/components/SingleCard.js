@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import styled from 'styled-components'
+
+const CardContainer = styled.div`
+text-align: center;
+`
 
 class SingleCard extends Component {
     state = {
@@ -26,7 +31,7 @@ class SingleCard extends Component {
 
     render() {
         return (
-            <div>
+            <CardContainer>
                 <h1>hey from single Card!</h1>
                 <div>{this.state.card.name}</div>
                 <div><img src={this.state.card.imageUrl} alt="card"/></div>
@@ -40,7 +45,7 @@ class SingleCard extends Component {
                 <div>{this.state.card.text}</div>
                 <div>{this.state.card.power}</div>
                 <div>{this.state.card.toughness}</div>
-            </div>
+            </CardContainer>
            
         );
     }

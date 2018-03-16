@@ -10,6 +10,7 @@ const FlexContainer = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-around;
+margin: 30px;
 `
 
 const FlexLeft = styled.div`

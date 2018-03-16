@@ -33,7 +33,8 @@ class SingleUser extends Component {
       newDeckForm: false,
       editUserForm: false
     },
-    redirect: false
+    redirect: false,
+    deleteConfirm: false
   };
 
   async componentDidMount() {
@@ -55,6 +56,10 @@ class SingleUser extends Component {
   toggleEditUserForm = () => {
     this.setState({ editUserForm: !this.state.editUserForm });
   };
+
+  toggleDeleteConfirm = () => {
+    this.setState({ deleteConfirm: !this.state.deleteConfirm})
+  }
 
   remove = () => {
     const userId = this.props.match.params.userId;
@@ -88,7 +93,16 @@ class SingleUser extends Component {
             ) : null}
           </div>
           <div>
-            <button onClick={this.remove}>Delete</button>
+            <button onClick={this.toggleDeleteConfirm}>Delete</button>
+            {this.state.deleteConfirm ? 
+              (
+                <div>
+                <p>Are you sure you want to delete this user?</p>
+              <button onClick={this.remove}>Yes</button>
+              <button>No</button>
+              </div>
+            ) 
+              : null}
           </div>
           {this.state.user.decks.map(deck => (
             <div key={deck._id}>
