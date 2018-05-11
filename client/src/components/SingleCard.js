@@ -32,7 +32,6 @@ class SingleCard extends Component {
     render() {
         return (
             <CardContainer>
-                <h1>hey from single Card!</h1>
                 <div>{this.state.card.name}</div>
                 <div><img src={this.state.card.imageUrl} alt="card"/></div>
                 <div><p>Colors: {this.state.card.colors}</p></div>
